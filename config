@@ -26,6 +26,16 @@ font pango:Inconsolata 10
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# Configuration which had to be installed in computer.
+# Removing nautilus desktop icons
+# gsettings set org.gnome.desktop.background show-desktop-icons false
+
+# Tools
+# [j]
+# Fzf
+# Mons (Desktops Configuration)
+# pactl (Pulse Audio controls)
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -94,16 +104,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
+set $ws1 "1:Google"
+set $ws2 "2:Pycharm"
+set $ws3 "3:Terminal"
+set $ws4 "4:SQL"
+set $ws5 "5:Stuff"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10:Spotify"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -214,9 +224,9 @@ bindsym $mod+Escape mode "$mode_system"
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 
-# FIXME
-#bindcode XF86MonBrightnessUp exec xbacklight -inc '5%' # light -p -A 10 # increase screen brightness
-#bindcode XF86MonBrightnessDown exec xbacklight -dec '5%' # light -p -U 10 # decrease screen brightnes
+#Screen brightness controls
+bindsym Mod4+0xffc6 exec light -U 20% # increase screen brightness
+bindsym Mod4+0xffc7 exec light -A 20% # increase screen brightness
 
 # Pulse Audio controls
 bindsym Mod4+plus exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
@@ -224,6 +234,6 @@ bindsym Mod4+minus exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Audio spotify
-bindsym Mod4+P exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
-bindsym Mod4+O exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
+bindsym Mod4+P exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym Mod4+O exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym Mod4+I exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
